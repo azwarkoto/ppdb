@@ -1,0 +1,390 @@
+/* Main Css Rules  for Main Elements in The project */
+body {
+    box-sizing: border-box;
+    padding: 0px;
+}
+
+.MyDiv {
+    margin: 10px;
+}
+
+.dropdown-menu > li > a, .testimonials .carousel-indicators li, .Table-price .Price-box p,
+.statistic .stat-layout .stat-info, .our-client img, .footer .three-columns li, .footer .Social-Media li img, .awesome-work img {
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+
+.color-box .colors, .color-box .colors ul li, .scroll-top-arrow, .color-box .fa-cog {
+    cursor: pointer;
+}
+
+.testimonials .carousel-indicators li.active, .footer .three-columns li:hover, .footer .Social-Media li img:hover, .our-client img:hover {
+    opacity: 1;
+}
+
+.testimonials .carousel-indicators li, .our-client img, .footer .three-columns li,
+.footer .Social-Media li img {
+    opacity: 0.4;
+}
+
+.testimonials .carousel-indicators li.active, .footer .three-columns li:hover, .testimonials .carousel-indicators li.active img, .awesome-work img:hover {
+    transform: scale(1.1);
+}
+
+.testimonials .container h4, .testimonials .container h3, .features .container .row .feat h3 {
+    font-weight: bold;
+    padding: 5px;
+}
+
+.footer .three-columns li, .color-box .colors, .color-box .fa-cog, .sk-cube-grid .sk-cube {
+    float: left;
+}
+
+.scroll-top-arrow, .our-team .our-team-layout, .statistic .stat-layout .stat-info:hover, .contact .contact-layout, .contact .contact-layout textarea,
+.contact .contact-layout input, .footer, .color-box .colors, .color-box .fa-cog {
+    color: white;
+}
+
+body, .testimonials .carousel-indicators li, .footer .three-columns, .color-box-container, .footer .Social-Media {
+    overflow: hidden;
+}
+
+.Skill-progress, .statistic .stat-layout, .subscribe {
+    padding-top: 40px;
+    padding-bottom: 65px;
+}
+
+/*  End of Main Css Rules  */
+
+/*  start navbar */
+.dropdown-menu {
+    background-color: #222 !important;
+    color: whitesmoke !important;
+}
+
+.dropdown-menu > li > a {
+    color: rgb(152, 152, 152) !important;
+}
+
+.navbar-nav > li > .dropdown-menu {
+    right: auto;
+    left: 0;
+    margin-right: 10px;
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+    padding-left: 30px;
+}
+
+/*  Hover And Focus in Navbar */
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > .active > a:focus, .navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus, .navbar-inverse .navbar-brand:hover,
+.navbar-inverse .navbar-brand:focus, .dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+    color: #ece8e8 !important;
+    
+    background-color: rgba(255, 81, 102, 0.54) !important;
+
+}
+/*  End navbar */
+
+/*Start Galeri*/
+.header{
+    margin: 8%;
+}
+
+.header h2,p{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.single-album{
+    position: relative;
+    overflow: hidden;
+    box-shadow: 5px 5px 15px #000;
+    margin-bottom: 100px;
+    margin-left: 50px;
+    border-radius: 150px 20px 30px 23px;
+}
+
+.album-img{
+    position: relative;
+    overflow: hidden;
+}
+
+.album-img img{
+    width: 150%;
+    transition: .4s;
+}
+
+.single-album:hover .album-img img{
+    transform: scale(1.5,1.5);
+}
+
+.album-content
+{
+    height: 50px;
+    width: 100%;
+    overflow: hidden;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    transition: all .4s;
+    background: #e430c5a8;
+}
+
+.single-album:hover .album-content{
+    height: 150px;
+    background: #000;
+}
+
+.album-info
+{
+    transition: all .5s;
+    padding: 5px 20px 5px 20px;
+}
+
+.album-info h3{
+    font-size: 16px;
+    color: #fff;
+    margin: 5px;
+    text-transform: uppercase;
+}
+
+.single-album:hover .album-info h3{
+    color: tomato;
+}
+
+.album-info p{
+    color: #fff;
+    margin-top: 15px;
+}
+
+.album-text{
+    color: #fff;
+    padding: 0 10px 5p;
+}
+/*End Galeri*/
+
+
+/* start footer */
+.footer {
+    padding-top: 50px;
+    background-color: rgba(0, 0, 0, 0.72);
+}
+
+.footer .three-columns {
+    padding-top: 30px;
+}
+
+.footer .three-columns li {
+    width: 33.33%;
+    margin-bottom: 20px;
+    font-size: larger;
+}
+
+.footer .Social-Media li {
+    width: 15%;
+    margin-right: 0.2%;
+}
+
+.Latest-Articles h2, .awesome-work h2 {
+    padding-bottom: 32px;
+}
+
+.awesome-work img {
+    margin: 5px;
+    border: 2px solid rgba(106, 106, 106, 0.58);
+    background: rgba(106, 106, 106, 0.58);
+    width: 45%;
+}
+
+.copyright {
+    height: 50px!important;
+    line-height: 50px!important;
+    background: rgba(143, 143, 143, 0.48);
+    margin-bottom: 0px !important;
+}
+
+.Latest-Articles, .sitemap, .awesome-work {
+    padding-bottom: 50px;
+}
+
+/* End footer */
+
+/*  Start Color Box*/
+.color-box {
+
+    position: fixed;
+    left: 0;
+    top: 100px;
+    z-index: 99999;
+}
+
+.color-box .colors {
+    padding: 10px 20px 30px;
+    background: rgba(92, 92, 92, 0.64);
+    display: none;
+}
+
+.color-box .colors ul li {
+    height: 20px;
+    width: 20px;
+}
+
+.color-box .colors ul li.red {
+    background: rgba(255, 81, 102, 0.54);
+}
+
+.color-box .colors ul li.yellow {
+    background: yellow;
+}
+
+.color-box .colors ul li.orange {
+    background: orange;
+}
+
+.color-box .colors ul li.blue {
+    background: blue;
+}
+
+.color-box .colors ul li.green {
+    background: green;
+}
+
+/* End  Color Box*/
+
+/* Start  Themes Color framwork*/
+
+.color-theme {
+    color: rgba(255, 81, 102, 0.54);
+}
+
+.background-color-theme {
+
+    background-color: rgba(255, 81, 102, 0.54);
+}
+
+.border-color-theme {
+    border: 3px solid rgba(255, 81, 102, 0.54);
+}
+
+/* End  Themes Color framwork */
+
+/* start scroll to top*/
+.scroll-top-arrow {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 70px;
+    height: 70px;
+    display: none;
+}
+
+/* End scroll to top*/
+
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width: 0px) and (max-width: 319px) {
+
+    .navbar-fixed-top .navbar-collapse, .navbar-fixed-bottom .navbar-collapse {
+        max-height: none;
+    }
+
+    .subscribe .form-inline .form-control {
+        display: block;
+        width: 100%;
+        margin-bottom: 20px;
+        vertical-align: middle;
+    }
+
+}
+@media only screen and (min-width: 320px) and (max-width: 479px) {
+
+    .navbar-fixed-top .navbar-collapse, .navbar-fixed-bottom .navbar-collapse {
+        max-height: none;
+    }
+
+    .subscribe .form-inline .form-control {
+        display: block;
+        width: 100%;
+        margin-bottom: 20px;
+        vertical-align: middle;
+    }
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+
+    .navbar-fixed-top .navbar-collapse, .navbar-fixed-bottom .navbar-collapse {
+        max-height: none;
+    }
+
+    .subscribe .form-inline .form-control {
+        display: block;
+        width: 100%;
+        margin-bottom: 20px;
+        vertical-align: middle;
+    }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .subscribe .form-inline .form-control {
+        display: inline-block;
+        width: 350px;
+        vertical-align: middle;
+    }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .subscribe .form-inline .form-control {
+        display: inline-block;
+        width: 350px;
+        vertical-align: middle;
+    }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width: 1200px) {
+    .subscribe .form-inline .form-control {
+        display: inline-block;
+        width: 350px;
+        vertical-align: middle;
+    }
+}
+
+
+
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > .active > a:focus,
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus,
+.navbar-inverse .navbar-brand:hover,
+.navbar-inverse .navbar-brand:focus,
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus ,
+.carousel-indicators .active
+{
+    background-color: rgba(255, 81, 102, 0.54) ;
+}
+
+
+
+
+
+.testimonials .carousel-indicators li.active ,
+.Table-price .Price-box:hover p
+{
+    border: 3px solid rgba(255, 81, 102, 0.54);
+}
+
+
+
+
+
+
