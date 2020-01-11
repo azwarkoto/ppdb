@@ -49,21 +49,22 @@
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 </div>
                 <div class="row">
-                    <div class="col-xs-2">
+                    <div class="col-md-2">
                         <button type="submit" class="btn btn-primary btn-block btn-flat" name="btnlogin">Masuk</button>
                     </div>
                     <!-- /.col -->
-                    <div class="col-xs-2">
+                    <div class="col-md-2">
                         <button type="reset" name="button" class="btn btn-secondary btn-block btn-flat">Batal</button>
                     </div>
                     <!-- /.col -->
                 </div>
             </form>
 
+            <br>
 
-
-            <a href="#" class="text-left" data-toggle="popover" title="Lupa password?" data-content="Datang ke sekolah atau telfon sekolah untuk mereset akun">Saya Lupa Password</a><br>
-            <!-- <a href="../daftar" target="_blank" class="text-right">Pendaftaran PPDB</a><br> -->
+            <!-- <a href="#" class="text-left" data-toggle="popover" title="Lupa password?" data-content="Datang ke sekolah atau telfon sekolah untuk mereset akun">Saya Lupa Password</a><br> -->
+            
+            <a href="../daftar" target="_blank" class="text-right">Pendaftaran PPDB</a><br>
 
         </div>
         <!-- /.login-box-body -->
