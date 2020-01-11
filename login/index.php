@@ -1,9 +1,5 @@
-<?php
-require_once 'conn.php';
- ?>
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -34,8 +30,8 @@ require_once 'conn.php';
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 
-<body class="hold-transition login-page">
-    <div class="login-box">
+<body class="hold-transition login-page" style="width:70%;margin:auto">
+    <div class="login-box" style="padding:20px;">
         <div class="login-logo">
             <a href="../"><b>PPDB</b>&nbsp;SMK Mercusuar Jakarta 2019/2020</a>
         </div>
@@ -43,7 +39,7 @@ require_once 'conn.php';
         <div class="login-box-body">
             <p class="login-box-msg"><?php echo ucwords('silahkan login menggunakan username atau email yang telah dibuat dipendaftaran') ?></p>
 
-            <form action="" method="post">
+            <form action="login.php" method="post">
                 <div class="form-group has-feedback">
                     <input type="text" class="form-control" name="akun" placeholder="Username Atau Email">
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -98,20 +94,3 @@ require_once 'conn.php';
 </body>
 
 </html>
-<?php
-if (isset($_POST['btnlogin'])) {
-  $username = htmlentities(strip_tags(mysqli_real_escape_string($conn,$_POST['akun'])));
-  $password = htmlentities(strip_tags(mysqli_real_escape_string($conn,$_POST['pass'])));
-  $encrypt = md5($password);
-
-  $cekakun = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM register WHERE username='$username' OR email='$username' AND password='$encrypt'"));
-  if (!empty($cekakun['username'])) {
-    //ada
-    $_SESSION['username'] = $cekakun['username'];
-    header("Location: main/");
-  }else {
-    //tidak ada
-    redirect("Akun Tidak ditemukan", "../index.php");
-  }
-}
- ?>
