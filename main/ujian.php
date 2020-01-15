@@ -36,8 +36,11 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <style>
         body {
-                padding-top: 50px;
-                }                
+            padding-top: 50px;
+        }              
+        .label-form{
+            margin:5px;
+        }
     </style>
 </head>
 
@@ -98,11 +101,11 @@
                     <h3>Pertanyaan</h3>
                     <p><?=$rs['soal']?></p><br>
                     <h4>Jawaban:</h4>
-                    <input type="radio" name="jawaban_<?=$rs['kdsoal']?>" id="jawaban_<?=$rs['kdsoal']?>_<?=$rs['a']?>"><label for="jawaban_<?=$rs['kdsoal']?>_<?=$rs['a']?>"><?=$rs['a']?></label><br>
-                    <input type="radio" name="jawaban_<?=$rs['kdsoal']?>" id="jawaban_<?=$rs['kdsoal']?>_<?=$rs['b']?>"><label for="jawaban_<?=$rs['kdsoal']?>_<?=$rs['b']?>"><?=$rs['b']?></label><br>
-                    <input type="radio" name="jawaban_<?=$rs['kdsoal']?>" id="jawaban_<?=$rs['kdsoal']?>_<?=$rs['c']?>"><label for="jawaban_<?=$rs['kdsoal']?>_<?=$rs['c']?>"><?=$rs['c']?></label><br>
-                    <input type="radio" name="jawaban_<?=$rs['kdsoal']?>" id="jawaban_<?=$rs['kdsoal']?>_<?=$rs['d']?>"><label for="jawaban_<?=$rs['kdsoal']?>_<?=$rs['d']?>"><?=$rs['d']?></label><br>
-                    <input type="radio" name="jawaban_<?=$rs['kdsoal']?>" id="jawaban_<?=$rs['kdsoal']?>_<?=$rs['e']?>"><label for="jawaban_<?=$rs['kdsoal']?>_<?=$rs['e']?>"><?=$rs['e']?></label><br>
+                    <input type="radio" name="jawaban_<?=$rs['kdsoal']?>" class="jawaban_pilih" id="jawaban_<?=$rs['kdsoal']?>_<?=$rs['b']?>"><label for="jawaban_<?=$rs['kdsoal']?>_<?=$rs['b']?>" class="label-form"><?=$rs['b']?></label><br>
+                    <input type="radio" name="jawaban_<?=$rs['kdsoal']?>" class="jawaban_pilih" id="jawaban_<?=$rs['kdsoal']?>_<?=$rs['a']?>"><label for="jawaban_<?=$rs['kdsoal']?>_<?=$rs['a']?>" class="label-form"><?=$rs['a']?></label><br>
+                    <input type="radio" name="jawaban_<?=$rs['kdsoal']?>" class="jawaban_pilih" id="jawaban_<?=$rs['kdsoal']?>_<?=$rs['c']?>"><label for="jawaban_<?=$rs['kdsoal']?>_<?=$rs['c']?>" class="label-form"><?=$rs['c']?></label><br>
+                    <input type="radio" name="jawaban_<?=$rs['kdsoal']?>" class="jawaban_pilih" id="jawaban_<?=$rs['kdsoal']?>_<?=$rs['d']?>"><label for="jawaban_<?=$rs['kdsoal']?>_<?=$rs['d']?>" class="label-form"><?=$rs['d']?></label><br>
+                    <input type="radio" name="jawaban_<?=$rs['kdsoal']?>" class="jawaban_pilih" id="jawaban_<?=$rs['kdsoal']?>_<?=$rs['e']?>"><label for="jawaban_<?=$rs['kdsoal']?>_<?=$rs['e']?>" class="label-form"><?=$rs['e']?></label><br>
                 </div>
             </div>
             <?php 
