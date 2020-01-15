@@ -90,7 +90,9 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">Jadwal Ujian</div>
                 <div class="panel-body">
-                   <p> Kepada <?= $row['nama'];?> (<?= $row['username'];?>) <br> ujian akan dilaksanakan pada tanggal <b><?= $row['jadwal'];?></b></p>
+                   <p> Kepada <?= $row['nama'];?> (<?= $row['username'];?>) <br> ujian akan dilaksanakan pada tanggal <b><?= $row['jadwal'];?></b>
+                    <a href="ujian.php" class="btn btn-primary" style="margin-top:10px">Mulai Ujian</a>
+                   </p>
                 </div>
             </div>
         </div>
