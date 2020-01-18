@@ -71,14 +71,26 @@
         </div><!-- /.container-fluid -->
     </nav>
 
-
-
     <?php
+        
+        $sid=$_SESSION['username'];
+        
         $query="SELECT * FROM biodata INNER JOIN jadwal ON biodata.kdjurusan=jadwal.kdjurusan INNER JOIN jurusan ON jurusan.kdjurusan=biodata.kdjurusan WHERE biodata.username='$sid'";
         $res=mysqli_query($conn,$query);
-        $row = mysqli_fetch_assoc($res);        
+        $row = mysqli_fetch_assoc($res);   
+        
+        
+        $query_nilai="SELECT * FROM nilai WHERE username='$sid'";
+        $res_nilai=mysqli_query($conn,$query_nilai);
+        $data_nilai = mysqli_num_rows($res_nilai);
+        if($data_nilai<1){
+            $query="DELETE FROM jwb WHERE kdjurusan='$row[kdjurusan]' AND username='$sid'";
+            $result=mysqli_query($conn,$query);
+        }else{
+            redirect("Anda Sudah Melakukan Ujian","./");
+        }
 
-        $query_soal="SELECT * FROM soal where kdjurusan='$row[kdjurusan]'";
+        $query_soal="SELECT * FROM soal WHERE kdjurusan='$row[kdjurusan]'";
         $res_soal=mysqli_query($conn,$query_soal);
         
             
@@ -88,10 +100,14 @@
                 
         <div class="soal" style="margin-bottom:230px">
             <h2>Ujian Jurusan <?=$row['namajurusan']?> </h2>
-            
-            <?php 
+            <?php
+                $query_jawab="SELECT * FROM jwb WHERE kdjurusan='$row[kdjurusan]' AND username='$sid'";
+                $res_jawab=mysqli_query($conn,$query_jawab);
+                $data_jawab=mysqli_fetch_all($res_jawab,MYSQLI_ASSOC);
+                
                 $n=1;
-                while($rs = mysqli_fetch_array($res_soal)):?>
+                while($rs = mysqli_fetch_array($res_soal)):
+            ?>
 
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -101,26 +117,36 @@
                     <h3>Pertanyaan</h3>
                     <p><?=$rs['soal']?></p><br>
                     <h4>Jawaban:</h4>
-                    <input type="radio" name="jawaban_<?=$rs['kdsoal']?>" class="jawaban_pilih" id="jawaban_<?=$rs['kdsoal']?>_<?=$rs['b']?>"><label for="jawaban_<?=$rs['kdsoal']?>_<?=$rs['b']?>" class="label-form"><?=$rs['b']?></label><br>
-                    <input type="radio" name="jawaban_<?=$rs['kdsoal']?>" class="jawaban_pilih" id="jawaban_<?=$rs['kdsoal']?>_<?=$rs['a']?>"><label for="jawaban_<?=$rs['kdsoal']?>_<?=$rs['a']?>" class="label-form"><?=$rs['a']?></label><br>
-                    <input type="radio" name="jawaban_<?=$rs['kdsoal']?>" class="jawaban_pilih" id="jawaban_<?=$rs['kdsoal']?>_<?=$rs['c']?>"><label for="jawaban_<?=$rs['kdsoal']?>_<?=$rs['c']?>" class="label-form"><?=$rs['c']?></label><br>
-                    <input type="radio" name="jawaban_<?=$rs['kdsoal']?>" class="jawaban_pilih" id="jawaban_<?=$rs['kdsoal']?>_<?=$rs['d']?>"><label for="jawaban_<?=$rs['kdsoal']?>_<?=$rs['d']?>" class="label-form"><?=$rs['d']?></label><br>
-                    <input type="radio" name="jawaban_<?=$rs['kdsoal']?>" class="jawaban_pilih" id="jawaban_<?=$rs['kdsoal']?>_<?=$rs['e']?>"><label for="jawaban_<?=$rs['kdsoal']?>_<?=$rs['e']?>" class="label-form"><?=$rs['e']?></label><br>
+                    
+                    
+                    <input type="radio" name="jawaban_<?=$rs['kdsoal']?>" <?php foreach($data_jawab as $dj){ if($rs['kdsoal']==$dj['kdsoal'] && $row['kdjurusan']==$dj['kdjurusan'] && $sid==$dj['username'] && $dj['get_jwb']=="A"){ echo "checked";}} ?> class="jawaban_pilih" data-key='jawaban_<?=$rs['kdsoal']?>' data-param="<?=$rs['a']?>" id="jawaban_<?=$rs['kdsoal']?>_<?=$rs['a']?>"><label for="jawaban_<?=$rs['kdsoal']?>_<?=$rs['a']?>" class="label-form"><?=$rs['a']?></label><br>
+                    <input type="radio" name="jawaban_<?=$rs['kdsoal']?>" <?php foreach($data_jawab as $dj){ if($rs['kdsoal']==$dj['kdsoal'] && $row['kdjurusan']==$dj['kdjurusan'] && $sid==$dj['username'] && $dj['get_jwb']=="B"){ echo "checked";}} ?> class="jawaban_pilih" data-key='jawaban_<?=$rs['kdsoal']?>' data-param="<?=$rs['b']?>" id="jawaban_<?=$rs['kdsoal']?>_<?=$rs['b']?>"><label for="jawaban_<?=$rs['kdsoal']?>_<?=$rs['b']?>" class="label-form"><?=$rs['b']?></label><br>
+                    <input type="radio" name="jawaban_<?=$rs['kdsoal']?>" <?php foreach($data_jawab as $dj){ if($rs['kdsoal']==$dj['kdsoal'] && $row['kdjurusan']==$dj['kdjurusan'] && $sid==$dj['username'] && $dj['get_jwb']=="C"){ echo "checked";}} ?> class="jawaban_pilih" data-key='jawaban_<?=$rs['kdsoal']?>' data-param="<?=$rs['c']?>" id="jawaban_<?=$rs['kdsoal']?>_<?=$rs['c']?>"><label for="jawaban_<?=$rs['kdsoal']?>_<?=$rs['c']?>" class="label-form"><?=$rs['c']?></label><br>
+                    <input type="radio" name="jawaban_<?=$rs['kdsoal']?>" <?php foreach($data_jawab as $dj){ if($rs['kdsoal']==$dj['kdsoal'] && $row['kdjurusan']==$dj['kdjurusan'] && $sid==$dj['username'] && $dj['get_jwb']=="D"){ echo "checked";}} ?> class="jawaban_pilih" data-key='jawaban_<?=$rs['kdsoal']?>' data-param="<?=$rs['d']?>" id="jawaban_<?=$rs['kdsoal']?>_<?=$rs['d']?>"><label for="jawaban_<?=$rs['kdsoal']?>_<?=$rs['d']?>" class="label-form"><?=$rs['d']?></label><br>
+                    <input type="radio" name="jawaban_<?=$rs['kdsoal']?>" <?php foreach($data_jawab as $dj){ if($rs['kdsoal']==$dj['kdsoal'] && $row['kdjurusan']==$dj['kdjurusan'] && $sid==$dj['username'] && $dj['get_jwb']=="E"){ echo "checked";}} ?> class="jawaban_pilih" data-key='jawaban_<?=$rs['kdsoal']?>' data-param="<?=$rs['e']?>" id="jawaban_<?=$rs['kdsoal']?>_<?=$rs['e']?>"><label for="jawaban_<?=$rs['kdsoal']?>_<?=$rs['e']?>" class="label-form"><?=$rs['e']?></label><br>
+                    <input type="hidden" class="jawaban_<?=$rs['kdsoal']?>" id="<?=$rs['kdsoal']?>" value="<?=strtolower($rs['kunci'])?>" >
                 </div>
             </div>
             <?php 
                 $n++;
-                endwhile;?>
+                endwhile;
+            ?>
 
-            <form action="save_ujian.php" medhod="post">
-                <input type="hidden" name="query" id="query">
-                <input type="hidden" name="nilai" id="nilai">
-                <input type="hidden" name="benar" id="benar">
-                <input type="hidden" name="salah" id="salah">
-                <input type="hidden" name="username" id="username">
+            <?php
+                $query="SELECT COUNT(kdsoal) AS jumlah  FROM soal WHERE kdjurusan='$row[kdjurusan]' ";
+                $res=mysqli_query($conn,$query);
+                $data=mysqli_fetch_assoc($res);
+                
+            ?>
+            <form action="{{ajax}}" medhod="post">
+                <input type="hidden" name="nilai" id="nilai" value="" placeholder="nilai">
+                <input type="hidden" name="jumlah" id="jumlah" value="<?=$data['jumlah'];?>" placeholder="jumlah">
+                <input type="hidden" name="benar" id="benar" value="" placeholder="benar">
+                <input type="hidden" name="salah" id="salah" value="" placeholder="salah">
+                <input type="hidden" name="username" value="<?=$sid?>" id="username" value="" placeholder="username">
+                <input type="hidden" name="jurusan" value="<?=$row['kdjurusan']?>" id="jurusan" value="" placeholder="jurusan">
                 <br>
-
-                <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
+                <button type="button" class="btn btn-primary btn-sm" id="btn-simpan">Simpan</button>
             </form>
         </div>
 
@@ -166,6 +192,125 @@
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- iCheck -->
     <script src="plugins/iCheck/icheck.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+
+            
+            $(document).on('click','.jawaban_pilih',function(){
+                let jurusan=$('#jurusan').val();
+                let username=$('#username').val();
+                let key=$(this).attr('data-key');
+                let answer=$(this).attr('data-param');
+                let question=$('.'+key).attr('id');
+                let true_answer=$('.'+key).val();
+                let result="";
+
+                if(answer==true_answer){
+                    result="1";
+                }else{
+                    result="0";
+                }                
+                
+                $.ajax({
+                    url:"api.php?method=cek-jawaban",
+                    method:"POST",
+                    data:{question:question,jurusan:jurusan,username:username,answer:answer.toUpperCase(),result:result},
+                    success:function(data)
+                    {
+                        console.log(data);
+                        
+                    }
+                });
+                
+                $.ajax({
+                    url:"api.php?method=cek-benar",
+                    method:"POST",
+                    data:{jurusan:jurusan,username:username},
+                    success:function(data)
+                    {
+                        let jumlah=$('#jumlah').val();
+                        $('#benar').val(data);
+                        let benar=$('#benar').val();
+                        let salah=parseInt(jumlah)-parseInt(benar);
+                        $('#salah').val(salah);
+                        let nilai=parseInt(benar)*100/parseInt(jumlah);
+                        $('#nilai').val(nilai);
+
+                    }
+                });
+
+                
+                
+                
+                
+            });
+
+            $(document).on('click','#btn-simpan',function(){
+                let jurusan=$('#jurusan').val();
+                let username=$('#username').val();
+
+                $.ajax({
+                    url:"api.php?method=cek-benar",
+                    method:"POST",
+                    data:{jurusan:jurusan,username:username},
+                    success:function(data)
+                    {
+                        let jumlah=$('#jumlah').val();
+                        $('#benar').val(data);
+                        let benar=$('#benar').val();
+                        let salah=parseInt(jumlah)-parseInt(benar);
+                        $('#salah').val(salah);
+                        let nilai=parseInt(benar)*100/parseInt(jumlah);
+                        $('#nilai').val(nilai);
+
+                    }
+                });
+
+                let jumlah=$('#jumlah').val();        
+                let benar=$('#benar').val();
+                let salah=$('#salah').val();
+                let nilai=$('#nilai').val();
+                
+                
+                let saved=confirm('Jawaban akan disimpan, anda yakin  ?');
+                if(saved){
+                    $.ajax({
+                            url:"api.php?method=cek-jawab",
+                            method:"POST",
+                            data:{jurusan:jurusan,username:username},
+                                success:function(data)
+                                {
+                                    if(jumlah==data){
+                                        $.ajax({
+                                        url:"api.php?method=simpan-nilai",
+                                        method:"POST",
+                                        data:{username:username,nilai:nilai,benar:benar,salah:salah},
+                                            success:function(data)
+                                            {
+                                                location.replace("./");
+                                            }
+                                        });
+                            
+                                    }else{
+                                        alert('Soal belum terisi semua silahkan cek kembali');   
+                                    }
+                                }
+                        });
+
+                }else{
+                    alert('Jawaban belum disimpan, silahkan cek kembali jawaban anda');
+                }
+    
+                
+                
+            });
+
+
+        });
+        
+        
+    </script>
 
 </body>
 

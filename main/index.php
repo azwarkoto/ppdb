@@ -91,7 +91,27 @@
                 <div class="panel-heading">Jadwal Ujian</div>
                 <div class="panel-body">
                    <p> Kepada <?= $row['nama'];?> (<?= $row['username'];?>) <br> ujian akan dilaksanakan pada tanggal <b><?= $row['jadwal'];?></b>
-                    <a href="ujian.php" class="btn btn-primary" style="margin-top:10px">Mulai Ujian</a>
+                    
+                    <?php
+                        $query_nilai="SELECT * FROM nilai WHERE username='$sid'";
+                        $res_nilai=mysqli_query($conn,$query_nilai);
+                        $data_nilai = mysqli_num_rows($res_nilai);
+                        if($data_nilai<1):
+                    ?>
+
+                        <?php if(date('Y-m-d')>$row['jadwal']):?>
+                            <a href="#" class="btn btn-primary" disabled style="margin-top:10px">Sudah lewat, tidak bisa mengikut ujian.</a>
+                        <?php elseif(date('Y-m-d')<$row['jadwal']):?>
+                            <a href="#" class="btn btn-primary" disabled style="margin-top:10px">Ujian Belum Mulai, belum bisa mengikut ujian.</a>
+                        <?php else:?>
+                            <a href="ujian.php" class="btn btn-primary" style="margin-top:10px">Mulai Ujian</a>        
+                        <?php endif;?>
+                    
+                    
+                    <?php else: ?>
+                        <a href="#" class="btn btn-primary" disabled style="margin-top:10px">Sudah Ujian</a>
+                    <?php endif; ?>
+                    
                    </p>
                 </div>
             </div>
